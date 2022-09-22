@@ -1,4 +1,4 @@
-class apiProducts {
+class ApiProducts {
     constructor(){
         this.products = []
         this.id = 0
@@ -13,8 +13,8 @@ class apiProducts {
         return[...this.products]
     }
 
-    saveProduct(){
-        const newProd = {...prod, id: ++this.id};
+    saveProduct(product){
+        const newProd = {...product, id: ++this.id};
         this.products.push(newProd)
     }
 
@@ -25,4 +25,4 @@ class apiProducts {
     
 }
 
-module.exports = {apiProducts}
+module.exports = {ApiProducts}

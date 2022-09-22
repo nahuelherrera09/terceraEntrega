@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
-const ApiProducts = require('./apiProducts.js')
+
+const {ApiProducts} = require('./ApiProducts.js')
 
 const { Router } = express
 
@@ -26,4 +27,8 @@ routerProducts.post('/', (req,res)=>{
     res.json(apiProducts.saveProduct(req.body))
 })
 
-app.listen(8000, () => console.log('Listen on port 8000'))
+app.use(express.static('public'))
+app.use('/api/productos', routerProducts)
+
+const server = app.listen(8000, () => console.log('Listen on port 8000'))
+server.on("error", error => console.log( `Error en el server ${error}`))
